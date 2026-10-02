@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mopeli Mopeli Teboho | Web Developer</title>
+  <meta name="description" content="Portfolio of websites and web apps built by Mopeli Mopeli Teboho.">
+  <meta name="theme-color" content="#05080f">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+
+  <div class="ambient" aria-hidden="true"></div>
+
+  <main class="page">
+    <header class="hero">
+      <div class="brand">
+        <!-- Click this M 5 times to open the admin login -->
+        <div class="mark" id="secret-mark" aria-hidden="true">M</div>
+        <h1>Mopeli Mopeli Teboho</h1>
+      </div>
+      <p class="tagline">I build web apps and business portals, from school management to booking systems.</p>
+      <div class="hero-actions">
+        <a href="cv.pdf" target="_blank" rel="noopener" class="btn btn-primary">View my CV</a>
+        <a href="#work" class="btn btn-ghost">See my work</a>
+      </div>
+    </header>
+
+    <section id="work" class="work">
+      <div class="section-head">
+        <h2>Websites I've built</h2>
+        <p id="project-count" class="muted"></p>
+      </div>
+      <div id="projects-grid" class="grid" aria-live="polite"></div>
+      <p id="empty-state" class="empty hidden">Nothing here yet. Check back soon.</p>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> Mopeli Mopeli Teboho</p>
+    </footer>
+  </main>
+
+  <!-- Admin panel (only visible after login) -->
+  <section id="admin-panel" class="admin hidden" aria-label="Admin panel">
+    <button type="button" id="admin-toggle" class="admin-head" aria-expanded="true">
+      <span>Add a website</span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="admin-body">
+      <form id="project-form" class="stack">
+        <label class="field">
+          <span>Website name</span>
+          <input type="text" id="project-title" required maxlength="80" autocomplete="off">
+        </label>
+        <label class="field">
+          <span>Website link</span>
+          <input type="url" id="project-url" placeholder="https://" required autocomplete="off">
+        </label>
+        <label class="field">
+          <span>Tech used</span>
+          <input type="text" id="project-tech" placeholder="Vue, Firebase" required maxlength="80" autocomplete="off">
+        </label>
+        <label class="field">
+          <span>Short description</span>
+          <textarea id="project-desc" rows="3" required maxlength="300"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Publish website</button>
+      </form>
+      <button type="button" id="logout-btn" class="link-danger">Log out</button>
+    </div>
+  </section>
+
+  <!-- Login screen -->
+  <dialog id="login-modal" class="login">
+    <div class="login-card">
+      <h3>Admin sign in</h3>
+      <p class="muted">Only the site owner can edit this portfolio.</p>
+      <form id="login-form" class="stack">
+        <label class="field">
+          <span>Email</span>
+          <input type="email" id="admin-email" required autocomplete="username">
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="admin-password" required autocomplete="current-password">
+        </label>
+        <p id="login-error" class="error hidden" role="alert"></p>
+        <div class="row">
+          <button type="button" id="close-login" class="btn btn-ghost">Cancel</button>
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+</body>
+</html>
